@@ -127,9 +127,13 @@ def detail(request):
     # 根据 分类ID 获取对应分类信息
     # goods_list = Goods.objects.filter(categoryid=categoryid)
     # a=index+1000
-    good=goods[index]
-    print(good)
-    return render(request,'detail.html')
+    go=goods[index].id
+    good=Goods.objects.get(id=go)
+
+    print(good,'hsajkh')
+    return render(request,'detail.html',context={
+        'good':good
+    })
 
 
 def carts(request):
