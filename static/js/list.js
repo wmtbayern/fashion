@@ -324,7 +324,7 @@ $(function(){
 	})
 	
 	var arr1 = [];
-	$.get("../json/details.json", function(data1){
+	$.get("/static/json/details.json", function(data1){
 		var arr1 = data1;
 		for (var j=0; j<arr1.length; j++) {
 			var obj1 = arr1[j];

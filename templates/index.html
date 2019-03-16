@@ -32,14 +32,18 @@
 
 				</div>
 				<div class="top_r">
-					<span>
 
-						<a href="{% url 'fashion:login' %}" title="登录" class="top_r_load">
-                        {{ user.name | default:'未登陆' }}
+
+                    <span>
+
+
+
+						<a href="{% url 'fashion:login' %}"  style="font-size: 20px;color:blue">
+                            {{ user.name | default:'未登陆' }}
 
                         </a>
 
-						<a href="{% url 'fashion:register' %}" title="注册">注册</a>
+						<a href="{% url 'fashion:register' %}" style="font-size: 20px;" >注册</a>
 
 					</span>
 					<span id="shop">
@@ -1113,15 +1117,17 @@
 
 
                <div class="swiper-container" id="mustbuySwiper">
-        <div class="swiper-wrapper">
+             <div class="swiper-wrapper">
             {% for good in good_list %}
                 <div class="swiper-slide">
-                    <a href="{% url 'fashion:detail' %}">
-                            <img class="img" src="{{ good.img }}" alt="#">
+                    <a href="{% url 'fashion:list' %}">
+
+                            <img class="img" src="{% static good.img %}" alt="#">
                             <p class="desc" style="font-size: 20px">{{ good.alt }}</p>
-                            <span class="price"> ￥{{ good.price_good}}</span>
+
+                        
                     </a>
-                <button style="flow: right"><span style="color: red;font-size:18px;">&nbsp;&nbsp;+&nbsp;&nbsp;</span></button>
+                <button ><span style="color: red;font-size:18px;">&nbsp;&nbsp;+&nbsp;&nbsp;</span></button>
                 </div>
             {% endfor %}
         </div>
@@ -1269,7 +1275,7 @@
 								<ul>
 									<li class="par1" style="padding-top:5px;"><a href=""></a></li>
 									<li class="par2" style="padding-top:6px;">
-										<a href="">
+										<a href="#">
 											<span style="margin-right: 4px;"></span>
 											<i class="float_l">银联特约商户</i>
 										</a>

@@ -652,7 +652,7 @@ body{
     height: 33px;
     line-height: 33px;
     cursor: pointer;
-    border: solid 1px #e8e8e8;
+    border:1px solid #e8e8e8;
     margin: 25px auto 30px;
 }
 #cart_prev,#cart_next{

@@ -1,17 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/car.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/details.css"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/car.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}"/>
 			
 		<!--轮播大图-->
-		<script src="../js/jquery-1.12.3.js"></script>
-		<script src="../js/jquery.cookie.js"></script>
-		<script src="../js/list.js"></script>
-		
+		<script src="{% static 'js/jquery-1.12.3.js' %}"></script>
+		<script src="{% static 'js/jquery.cookie.js' %}"></script>
+		<script src="{% static 'js/list.js' %}"></script>
+		<script src="{% static 'js/market.js' %}"></script>
+
 	</head>
 	<body>
 		<div class="relative">
@@ -19,27 +21,27 @@
 				<div class="contaier" style="height:35px;">
 					<div class="top_l">
 						<div id="App">
-							<span style="background: url(../img/headico.png)0px -2px no-repeat;width:40px;height:35px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span style="background: url({% static 'img/headico.png' %})0 -2px no-repeat;width:40px;height:35px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span style="border-right:1px solid #ccc;padding-right:15px;padding-left:2px;">4000-250-630</span>
-							<a href="" style="background: url(../img/headico.png)-20px -2px no-repeat;width:40px;height:35px;margin-left:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+							<a href="" style="background: url({% static 'img/headico.png' %})-20px -2px no-repeat;width:40px;height:35px;margin-left:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 							<a href="" title="下载美西APP">下载美西APP</a>
 						</div>
 						
 						<div id="headerApp_m">
 			                <div class="header_sj"></div>
-			                <div class="headerApp_code"><a href="" title="下载美西APP"><img src="../img/ewm_indexTop_1.png" style="display: block;">扫码下载</a></div>
+			                <div class="headerApp_code"><a href="" title="下载美西APP"><img src="{% static 'img/ewm_indexTop_1.png' %}" style="display: block;">扫码下载</a></div>
 			            </div>
 						
 					</div>
 					<div class="top_r">
 						<span>
-							<a href="login.html" title="登录" class="top_r_load">登录</a>
-							<a href="register.html" title="注册">注册</a>
+							<a href="{% url 'fashion:login' %}" title="登录" class="top_r_load" style="font-size: 20px">{{user.name | default:'未登陆'}}</a>
+							<a href="{% url 'fashion:register' %}" title="注册" style="font-size: 20px">注册</a>
 							
 						</span>
 						<span id="shop">
 							<a href="" class="relative" title="购物袋" style="margin-left: 18px;padding-left: 20px;border-left: solid 1px #d9d9d9;">    
-								<span style="background: url(../img/headico.png)-37px -2px no-repeat;height:35px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span style="background: url({% static 'img/headico.png' %})-37px -2px no-repeat;height:35px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								购物袋（<i id="total_num">0</i>）
 							</a>
 							
@@ -91,13 +93,13 @@
 			<div id="logo" class="relative">
 				<div class="contaier relative" >
 					<a href="index.html" title="美西">
-						<img src="../img/logo.png"/ style="padding-top:35px;height:60px;width: 220px;display: inline-block;" alt="美西">
+						<img src="{% static 'img/logo.png' %}" style="padding-top:35px;height:60px;width: 220px;display: inline-block;" alt="美西">
 						
 					</a>
 					<div class="absolute" style="width:250px;right:10px;top:40px;">
 						<input type="text" id="" value="" placeholder="请输入关键字" style="font-size:12px;height:28px;border:0;border-bottom:1px solid #e8e8e8;color:#6c6c6c;width:165px;outline:none;"/>
 						<button class="absolute" style="border:0;width: 30px;height:25px;background: white;outline:none;right:32px;top:5px;">
-							<a href="" style="display:inline-block;height:20px;width:20px;background:url(../img/headico.png)-60px 0 no-repeat;"></a>
+							<a href="" style="display:inline-block;height:20px;width:20px;background:url({% static 'img/headico.png' %})-60px 0 no-repeat;"></a>
 						</button>
 					</div>
 				</div>
@@ -112,7 +114,7 @@
 						<li><a href="" title="全球购">全球购</a></li>
 						<li><a href="" title="女士" id="menu2">女士</a></li>
 						<li><a href="" title="男仕" id="menu3">男仕</a></li>
-						<li><a href="" title="童装"id="menu4" >童装</a></li>
+						<li><a href="" title="童装" id="menu4" >童装</a></li>
 						<li><a href="" title="腕表" id="menu5">腕表</a></li>
 						<li><a href="" title="品牌" id="menu6">品牌</a></li>
 						<li><a href="" title="Mzine">Mzine</a></li>
@@ -347,7 +349,7 @@
 			<div class="conten" style="overflow:hidden;">
 				<div class="contaier" style="overflow:hidden;">
 					<div class="title_women">
-						女士
+
 					</div>
 					<div class="float_l" style="width:270px;">
 						
@@ -397,19 +399,28 @@
 					</div>
 					<div class="float_r">
 						<div id="con_r" style="width:900px;font-size:12px;overflow:hidden;">
-							<ul id="product_li" style="overflow:hidden;">
-								<!--<li class="product1" data-guid="pro3">
-									<a href="#" class="aaa">
-									<a href="#"><img class="simgFirst" data-original="../img/pro3.jpg" alt=""></a>
+							<ul id="product_li" >
+
+                                {% for good in goods %}
+
+
+								<li class="product1" data-guid="pro3">
+
+									<a href="{% url 'fashion:goods'  %}">
+                                        <img src="{% static good.img %}" alt="" class="simgFirst">
+{#                                        <img class="simgFirst" data-original="{% static 'img/pro3.jpg' %}" alt="">#}
+
+                                    </a>
 									<div class="product_n"><a href="#">
-											<p>Dolce&Gabbana 杜嘉班纳 </p><b>牛皮 男仕 公文包</b>
+											<p>{{ good.said1 }}</p><b>{{ good.alt  }}</b>
 										</a></div>
 									<div class="product_p">
-										<div class="prop_l"><s>￥7450.00<br></s><span>￥6119.00</span></div>
+										<div class="prop_l"><s><br></s><span>￥{{ good.price_good }}</span></div>
 										<div class="prop_r"><a href="#"></a></div>
 									</div>
-									</a>
-								</li>-->
+
+								</li>
+                                {% endfor %}
 							</ul>
 						</div>
 					</div>
@@ -434,7 +445,7 @@
 						<!--<div class="run_pic">-->
 						<div id="like_shop" class="run_pic_like">
 							<div id="like_small">
-								<ul id="like_list" class="clearfix" style="margin: 0px; padding: 0px; position: relative;z-index: 1; width: 5240px; left: -1048px;">
+								<ul id="like_list" class="clearfix" style="margin: 0; padding: 0; position: relative;z-index: 1; width: 5240px; left: -1048px;">
 									<!--<li style="overflow: hidden; float: left; width: 220px; height: 382px;">
 						                <a title="LOUIS VUITTON x SUPREME 联名腰带" href="">
 						                    <img src="../img2/19192259c4f1bac0a97-160x192.jpg" width="160" height="192" alt=""><br>
@@ -448,8 +459,8 @@
 						            </li>-->
 					                   
 								</ul>
-								<div id="car_prev"><img src="../img/pre_btn.png" style="padding-top:100px;"/></div>
-								<div id="car_next"><img src="../img/next_btn.png" style="padding-top:100px;"/></div>
+								<div id="car_prev"><img src="{% static 'img/pre_btn.png' %}" style="padding-top:100px;"></div>
+								<div id="car_next"><img src="{% static 'img/next_btn.png' %}" style="padding-top:100px;"></div>
 							</div>
 			
 						<!--</div>-->
@@ -467,7 +478,7 @@
 				            <div class="consult_app_m">
 				                <div class="consult_app_sj"></div>
 				                <div class="consult_app_code">
-				                    <img src="../img2/ewm_indexTop_1.png" style="display:block;">
+				                    <img src="{% static 'img2/ewm_indexTop_1.png' %}" style="display:block;">
 				                </div>
 				            </div>
 				        </li>
@@ -534,7 +545,7 @@
 								<span style="font-size:14px;color: #333;">美西APP</span>
 								<div style="margin-top:20px;border:1px solid #e8e8e8;padding:20px;">
 									<span style="display:block;width:67px;height:67px;">
-										<img src="../img/down_app.png"/>
+										<img src="{% static 'img/down_app.png' %}"/>
 									</span>
 								</div>
 								
@@ -543,7 +554,7 @@
 								<span style="font-size:14px;color: #333;">官方微信</span>
 								<div style="margin-top:20px;border:1px solid #e8e8e8;padding:20px;">
 									<span style="display:block;width:67px;height:67px;">
-										<img src="../img/wechat.png"/>
+										<img src="{% static 'img/wechat.png' %}"/>
 									</span>
 								</div>
 								
@@ -629,7 +640,7 @@
 				</div>
 				
 			</div>
-		</div>
+
 		
 	</body>
 </html>
