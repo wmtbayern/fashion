@@ -1,90 +1,92 @@
 
 
-$(function(){
+$(function() {
 
 //隐藏二级菜单
-	function second(lar,sma){
+	function second(lar, sma) {
 
-		lar.mouseenter(function(){
+		lar.mouseenter(function () {
 			sma.animate({opacity: 'show'});
 		})
 //		sma.mouseenter(function(){
 //			sma.animate({opacity: 'show'});
 //		})
-		sma.mouseleave(function(){
+		sma.mouseleave(function () {
 			sma.animate({opacity: 'hide'});
 		})
 //		lar.mouseleave(function(){
 //			sma.animate({opacity: 'hide'});
 //		})
 	}
-	function second1(lar,sma){
 
-		lar.mouseenter(function(){
+	function second1(lar, sma) {
+
+		lar.mouseenter(function () {
 			sma.animate({opacity: 'show'});
 		})
 //		sma.mouseenter(function(){
 //			sma.animate({opacity: 'show'});
 //		})
-		sma.mouseleave(function(){
+		sma.mouseleave(function () {
 			sma.animate({opacity: 'hide'});
 		})
 //		lar.mouseleave(function(){
 //			sma.css({"display":"none"});
 //		})
 	}
+
 //扫码
-	second($("#App"),$("#headerApp_m"));
+	second($("#App"), $("#headerApp_m"));
 
 //购物袋
-	second1( $("#shop"),$("#headershop"));
+	second1($("#shop"), $("#headershop"));
 
 
 //二级菜单
 //新品
-	second($("#menu1"),$("#nts"));
+	second($("#menu1"), $("#nts"));
 
 //女士
-	second($("#menu2"),$("#women"));
+	second($("#menu2"), $("#women"));
 
 //男士
-	second($("#menu3"),$("#man"));
+	second($("#menu3"), $("#man"));
 
 
 //童装
-	second($("#menu4"),$("#wear"));
+	second($("#menu4"), $("#wear"));
 
 
 //	腕表
-	second($("#menu5"),$("#watch"));
+	second($("#menu5"), $("#watch"));
 
 //	品牌
-	second($("#menu6"),$("#brand"));
+	second($("#menu6"), $("#brand"));
 
 //	在线咨询
-	second($(".consultApp"),$(".consult_app_m"));
+	second($(".consultApp"), $(".consult_app_m"));
 
 //	猜你喜欢手动轮播
-	$.get("static/json/car.json", function(data2){
+	$.get("static/json/car.json", function (data2) {
 		var arr2 = data2;
-		for (var k =0; k < arr2.length; k++) {
+		for (var k = 0; k < arr2.length; k++) {
 			var obj2 = arr2[k];
 
 			//创建li节点
 			var li_car = $("<li class='car_list'></li>").appendTo("#like_list");
-			var a_car = $("<a href='' title="+obj2.wen+"></a>").appendTo(li_car);
-			$("<img class='car_img' src="+ obj2.img +" alt="+obj2.alt+">").appendTo(a_car);
+			var a_car = $("<a href='' title=" + obj2.wen + "></a>").appendTo(li_car);
+			$("<img class='car_img' src=" + obj2.img + " alt=" + obj2.alt + ">").appendTo(a_car);
 			var div_car = $("<div class='list_name'></div>").appendTo(a_car);
-			$("<span class='shop_name'>"+ obj2.said1 +"</span></br><span class='shop_type'>"+obj2.said2+"</span>").appendTo(div_car);
-			$("<div class='shop_price'>"+"￥"+obj2.price+"</div>").appendTo(li_car);
-			$("<a class='shop_add' title="+obj2.title+">"+obj2.html+"</a>").appendTo(li_car);
+			$("<span class='shop_name'>" + obj2.said1 + "</span></br><span class='shop_type'>" + obj2.said2 + "</span>").appendTo(div_car);
+			$("<div class='shop_price'>" + "￥" + obj2.price + "</div>").appendTo(li_car);
+			$("<a class='shop_add' title=" + obj2.title + ">" + obj2.html + "</a>").appendTo(li_car);
 
 		}
 		lunbo_car();
 	})
 
 	//jq小图轮播
-	function lunbo_car(){
+	function lunbo_car() {
 		var like_list = $("#like_list");
 		var li2 = $("#like_list li");
 
@@ -95,7 +97,7 @@ $(function(){
 		li2.eq(3).clone(true).appendTo(like_list);
 
 		var size3 = $("#like_list li").size();
-		like_list.width(262*size3);
+		like_list.width(262 * size3);
 
 		//开启定时器
 		var i = 0;
@@ -104,24 +106,24 @@ $(function(){
 //			move3();
 //		}, 3000);
 //
-		function move3(){
+		function move3() {
 			if (i < 0) {
-				like_list.css("left", -262*(size3-1));
-				i = size3-4;
+				like_list.css("left", -262 * (size3 - 1));
+				i = size3 - 4;
 			}
-			if (i >= size3){
+			if (i >= size3) {
 				like_list.css("left", 0);
 				i = 4;
 			}
-			like_list.stop().animate({left:-i*262}, 500);
+			like_list.stop().animate({left: -i * 262}, 500);
 		}
 
-		$("#car_prev").click(function(){
+		$("#car_prev").click(function () {
 			i -= 4;
 			move3();
 		})
 		//下一页
-		$("#car_next").click(function(){
+		$("#car_next").click(function () {
 			i += 4;
 			move3();
 		})
@@ -130,34 +132,32 @@ $(function(){
 
 
 //	在线咨询跟随滚动条运动
-	$(window).scroll(function(){
+	$(window).scroll(function () {
 		var scrollTop = $(window).scrollTop();
-		$(".consult").stop().animate({"top":100 + scrollTop});
+		$(".consult").stop().animate({"top": 100 + scrollTop});
 	});
 	//	回到顶部
-	$(".consult_top").click(function(e){
+	$(".consult_top").click(function (e) {
 		e.preventDefault();
-		$("html,body").stop(true).animate({scrollTop:0});
+		$("html,body").stop(true).animate({scrollTop: 0});
 
 	})
 
 
-
-
-	$(".prev_good").click(function(){
-		$("#mycarousel1").animate({"top":"+=69px"})
+	$(".prev_good").click(function () {
+		$("#mycarousel1").animate({"top": "+=69px"})
 
 	})
-	$(".next_good").click(function(){
-		$("#mycarousel1").animate({"top":"-=69px"})
+	$(".next_good").click(function () {
+		$("#mycarousel1").animate({"top": "-=69px"})
 	})
 
-	$(".list_edit a").mouseenter(function(){
+	$(".list_edit a").mouseenter(function () {
 		$(this).addClass("zoomThumbActive");
-		$(".zoomPad_img").attr("src", $(this).children("img").attr("src") );
+		$(".zoomPad_img").attr("src", $(this).children("img").attr("src"));
 
 	})
-	$(".list_edit a").mouseleave(function(){
+	$(".list_edit a").mouseleave(function () {
 		$(this).removeClass("zoomThumbActive")
 	})
 
@@ -165,59 +165,57 @@ $(function(){
 //	放大镜
 	//等比公式
 	//小图width/大图width == 小区域width/大区域width
-	$("#smallArea").width( $("#smallImg").width() * $("#bigArea").width() / $("#bigImg").width() );
-	$("#smallArea").height( $("#smallImg").height() * $("#bigArea").height() / $("#bigImg").height() );
+	$("#smallArea").width($("#smallImg").width() * $("#bigArea").width() / $("#bigImg").width());
+	$("#smallArea").height($("#smallImg").height() * $("#bigArea").height() / $("#bigImg").height());
 
 	//放大系数
 	var scale = $("#bigImg").width() / $("#smallImg").width();
 
 	//在小图中移动
-	$("#smallImg").mousemove(function(e){
-		$("#bigImg").attr("src", $(this).children("img").attr("src") );
+	$("#smallImg").mousemove(function (e) {
+		$("#bigImg").attr("src", $(this).children("img").attr("src"));
 		$("#smallArea").show(); //显示小区域
 		$("#bigArea").show(); //显示大区域
 
-		var x = e.pageX - $("#smallImg").offset().left - $("#smallArea").width()/2;
-		var y = e.pageY - $("#smallImg").offset().top - $("#smallArea").height()/2;
+		var x = e.pageX - $("#smallImg").offset().left - $("#smallArea").width() / 2;
+		var y = e.pageY - $("#smallImg").offset().top - $("#smallArea").height() / 2;
 
 		//控制不超出左右边界
-		if (x < 0){
+		if (x < 0) {
 			x = 0;
-		}
-		else if (x > $("#smallImg").width()-$("#smallArea").width()){
-			x = $("#smallImg").width()-$("#smallArea").width();
+		} else if (x > $("#smallImg").width() - $("#smallArea").width()) {
+			x = $("#smallImg").width() - $("#smallArea").width();
 		}
 		//控制不超出上下边界
-		if (y < 0){
+		if (y < 0) {
 			y = 0
-		}
-		else if (y > $("#smallImg").height()-$("#smallArea").height()) {
-			y = $("#smallImg").height()-$("#smallArea").height();
+		} else if (y > $("#smallImg").height() - $("#smallArea").height()) {
+			y = $("#smallImg").height() - $("#smallArea").height();
 		}
 
 		//小区域移动
-		$("#smallArea").css({left:x, top:y});
+		$("#smallArea").css({left: x, top: y});
 
 		//大图移动
-		$("#bigImg").css({left: -scale*x,top: -scale*y});
+		$("#bigImg").css({left: -scale * x, top: -scale * y});
 	})
 
 	//移除小图
-	$("#smallImg").mouseleave(function(){
+	$("#smallImg").mouseleave(function () {
 		$("#smallArea").hide(); //隐藏小区域
 		$("#bigArea").hide(); //隐藏大区域
 	})
 
-	$(".clearfix li a").mouseenter(function(){
+	$(".clearfix li a").mouseenter(function () {
 		$(this).siblings($(".size_tip")).show();
 	})
-	$(".clearfix li a").mouseleave(function(){
+	$(".clearfix li a").mouseleave(function () {
 		$(this).siblings($(".size_tip")).hide();
 	})
 
 
 //	点击尺码
-	$(".clearfix li a").click(function(){
+	$(".clearfix li a").click(function () {
 		$(this).parent().addClass("cur");
 		$(this).parent().siblings().removeClass("cur");
 	})
@@ -225,26 +223,26 @@ $(function(){
 
 //	相关推荐
 	//	相关推荐手动轮播
-	$.get("static/json/car.json", function(data0){
+	$.get("static/json/car.json", function (data0) {
 		var arr_good = data0;
-		for (var k =0; k < arr_good.length; k++) {
+		for (var k = 0; k < arr_good.length; k++) {
 			var good_obj2 = arr_good[k];
 
 			//创建li节点
 			var li_cart = $("<li class='cart_list1'></li>").appendTo("#good_list1");
-			var a_cart = $("<a href='' title="+good_obj2.wen+"></a>").appendTo(li_cart);
-			$("<img class='cart_img' src="+ good_obj2.img +" alt="+good_obj2.alt+">").appendTo(a_cart);
+			var a_cart = $("<a href='' title=" + good_obj2.wen + "></a>").appendTo(li_cart);
+			$("<img class='cart_img' src=" + good_obj2.img + " alt=" + good_obj2.alt + ">").appendTo(a_cart);
 			var div_cart = $("<div class='list1_name'></div>").appendTo(a_cart);
-			$("<span class='shop_name'>"+ good_obj2.said1 +"</span></br><span class='shop_type'>"+good_obj2.said2+"</span>").appendTo(div_cart);
-			$("<div class='shop_price'>"+good_obj2.unit+good_obj2.price_good+"</div>").appendTo(li_cart);
-			$("<a class='shop_add' title="+good_obj2.title+">"+good_obj2.html+"</a>").appendTo(li_cart);
+			$("<span class='shop_name'>" + good_obj2.said1 + "</span></br><span class='shop_type'>" + good_obj2.said2 + "</span>").appendTo(div_cart);
+			$("<div class='shop_price'>" + good_obj2.unit + good_obj2.price_good + "</div>").appendTo(li_cart);
+			$("<a class='shop_add' title=" + good_obj2.title + ">" + good_obj2.html + "</a>").appendTo(li_cart);
 
 		}
 		lunbo_cart();
 	})
 
 	//jq小图轮播
-	function lunbo_cart(){
+	function lunbo_cart() {
 		var good_list1 = $("#good_list1");
 		var good_li2 = $("#good_list1 li");
 
@@ -255,7 +253,7 @@ $(function(){
 		good_li2.eq(3).clone(true).appendTo(good_list1);
 
 		var good_size3 = $("#good_list1 li").size();
-		good_list1.width(262*good_size3);
+		good_list1.width(262 * good_size3);
 
 		//开启定时器
 		var i = 0;
@@ -264,24 +262,24 @@ $(function(){
 //			good_move3();
 //		}, 3000);
 //
-		function good_move3(){
+		function good_move3() {
 			if (i < 0) {
-				good_list1.css("left", -262*(good_size3-1));
-				i = good_size3-4;
+				good_list1.css("left", -262 * (good_size3 - 1));
+				i = good_size3 - 4;
 			}
-			if (i >= good_size3){
+			if (i >= good_size3) {
 				good_list1.css("left", 0);
 				i = 4;
 			}
-			good_list1.stop().animate({left:-i*262}, 500);
+			good_list1.stop().animate({left: -i * 262}, 500);
 		}
 
-		$("#cart_prev").click(function(){
+		$("#cart_prev").click(function () {
 			i -= 4;
 			good_move3();
 		})
 		//下一页
-		$("#cart_next").click(function(){
+		$("#cart_next").click(function () {
 			i += 4;
 			good_move3();
 		})
@@ -289,11 +287,11 @@ $(function(){
 	}
 
 //	点击商品详情
-	$("#tab li").click(function(){
+	$("#tab li").click(function () {
 		$(this).addClass("current").siblings().removeClass("current");
 
 	})
-	$("#current1").click(function(){
+	$("#current1").click(function () {
 		$(window).scrollTop("1390");
 		$(".product").show();
 		$(".story").show();
@@ -301,7 +299,7 @@ $(function(){
 		$(".size").hide();
 		$(".bution").hide();
 	})
-	$("#current2").click(function(){
+	$("#current2").click(function () {
 		$(window).scrollTop("1390");
 		$(".product").hide();
 		$(".story").hide();
@@ -310,7 +308,7 @@ $(function(){
 		$(".bution").hide();
 
 	})
-	$("#current3").click(function(){
+	$("#current3").click(function () {
 		$(window).scrollTop("1390");
 		$(".product").hide();
 		$(".story").hide();
@@ -320,9 +318,9 @@ $(function(){
 
 	})
 
-	$(".goon").click(function(e){
+	$(".goon").click(function (e) {
 		e.preventDefault();
-		window.location.href="list.html";
+		window.location.href = "list.html";
 	})
 
 
@@ -423,21 +421,21 @@ $(function(){
 // 				location.href = "goods.html?id=" + obj.id;
 // 			})
 
-			//显示总价
-			$("#total").html("￥"+totalPrice);
-			$(".totalprice").html(totalPrice);
-			$("#total_num").html(total_num);
-			$("#total_nums").html(total_num);//购物车页下面总数
-		}
-		else {
+	//显示总价
+	$("#total").html("￥" + totalPrice);
+	$(".totalprice").html(totalPrice);
+	$("#total_num").html(total_num);
+	$("#total_nums").html(total_num);//购物车页下面总数
+}
+		else{
 			console.log("购物车还没有商品， 请先购买！");
-			$(".empty_car").css({"display":"block"});
-			$(".shop_ck").css({"display":"none"});
-			$(".kong").css({"display":"block"});
-			$(".cart_out").css({"display":"none"});
-			$(".full_car").hide();
-		}
-	}
+	$(".empty_car").css({"display": "block"});
+	$(".shop_ck").css({"display": "none"});
+	$(".kong").css({"display": "block"});
+	$(".cart_out").css({"display": "none"});
+	$(".full_car").hide();
+
+}
 
 
 
@@ -663,4 +661,4 @@ $(function(){
 
 
 
-})
+

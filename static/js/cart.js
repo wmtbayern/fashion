@@ -12,7 +12,7 @@ $(function () {
             'cartid':$(this).attr('data-cardid')
         }
 
-        $.get('/fashion/changecarselect/', request_data, function (response) {
+        $.get('/changecarselect/', request_data, function (response) {
             console.log(response)
 
             if (response.status == 1) {
@@ -29,7 +29,7 @@ $(function () {
 
 
     // 全选/取消全选
-    $('.cart .all').click(function () {
+    $('.totall .clearfix .all').click(function () {
         var isall = $(this).attr('data-all')
         $span = $(this).find('span')
 
@@ -49,7 +49,7 @@ $(function () {
             'isall':isall
         }
 
-        $.get('/fashion/changecarall/', request_data, function (response) {
+        $.get('/changecarall/', request_data, function (response) {
             console.log(response)
 
             if (response.status == 1){

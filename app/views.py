@@ -2,6 +2,7 @@ import hashlib
 import random
 import time
 from json.decoder import JSONObject
+from urllib.parse import parse_qs
 
 from django.core.cache import cache
 from django.http import JsonResponse
@@ -10,6 +11,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
+from app.alipay import alipay
 from app.models import lunbo, User, lunbo1, Goods, Car, Order, OrderGoods
 
 
@@ -238,7 +240,7 @@ def subcar(request):
 
 
 def changecarselect(request):
-    carid = request.GET.get('carid')
+    carid = request.GET.get('cartid')
 
     car = Car.objects.get(pk=carid)
     car.isselect = not car.isselect
@@ -290,12 +292,14 @@ def generateorder(request):
 
     # 订单
     order = Order()
+
     order.user = user
     order.identifier = generate_identifier()
     order.save()
 
     # 订单商品(购物车中选中)
     cars = user.car_set.filter(isselect=True)
+
     for car in cars:
         orderGoods = OrderGoods()
         orderGoods.order = order
@@ -310,10 +314,7 @@ def generateorder(request):
     #     'msg': '生成订单',
     #     'status': 1,
     #     'identifier': order.identifier
-    # }
-    #
-    # return JsonResponse(response_data)
-
+    print(order.ordergoods_set.all().first())
     return render(request, 'orderdetail.html', context={'order': order})
 
 
@@ -336,4 +337,56 @@ def orderdetail(request, identifier):
 
 
 def returnurl(request):
-    return redirect('axf:mine')
+    return redirect('fashion:index')
+@csrf_exempt
+def appnotifyurl(request):
+    if request.method == 'POST':
+        # 获取到参数
+        body_str = request.body.decode('utf-8')
+
+        # 通过parse_qs函数
+        post_data = parse_qs(body_str)
+
+        # 转换为字典
+        post_dic = {}
+        for k,v in post_data.items():
+            post_dic[k] = v[0]
+
+        # 获取订单号
+        out_trade_no = post_dic['out_trade_no']
+
+        # 更新状态
+        Order.objects.filter(identifier=out_trade_no).update(status=1)
+
+
+    return JsonResponse({'msg':'success'})
+
+
+def pay(request):
+    # print(request.GET.get('orderid'))
+
+    orderid = request.GET.get('orderid')
+    order = Order.objects.get(pk=orderid)
+
+    sum = 0
+    for orderGoods in order.ordergoods_set.all():
+        sum += orderGoods.goods.price * orderGoods.number
+
+    # 支付地址信息
+    data = alipay.direct_pay(
+        subject='就是要买卖买......', # 显示标题
+        out_trade_no=order.identifier,    # 商品 订单号
+        total_amount=str(sum),   # 支付金额
+        return_url='http://120.79.59.213/fashion/returnurl/'
+    )
+
+    # 支付地址
+    alipay_url = 'https://openapi.alipaydev.com/gateway.do?{data}'.format(data=data)
+
+    response_data = {
+        'msg': '调用支付接口',
+        'alipayurl': alipay_url,
+        'status': 1
+    }
+
+    return JsonResponse(response_data)

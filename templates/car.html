@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+        <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/car.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
@@ -107,7 +108,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<!--导航-->
 			<div id="nav">
 				<div class="contaier" style="overflow: hidden;">
@@ -359,7 +360,7 @@
 
                             {% for car in cars %}
                                 <li>
-                                    <div class="confirm-wrapper" data-carid="{{ car.id }}">
+                                    <div class="confirm-wrapper" data-cardid="{{ car.id }}">
                                         {% if car.isselect %}
                                             <span class="glyphicon glyphicon-ok"></span>
                                         {% else %}
@@ -391,17 +392,8 @@
                                     {% else %}
                                         <span class="no"></span>
                                     {% endif %}
-{#                                    <b>全选</b>#}
                                 </div>
-{#                                <div class="total">#}
-{#                                    <span>￥</span>#}
-{#                                    <b>2019</b>#}
-{#                                </div>#}
                             </div>
-
-{#                            <div class="bill-right" id="order">#}
-{#                                    xaihdhd#}
-{#                            </div>#}
                         </div>
                     </div>
 
@@ -411,7 +403,17 @@
 								<span style="margin-left: 20px;">合计（不含运费、税费）：<span class="total" style="color:red;font-size:18px;font-weight:bolder;margin-right:30px">0</span></span>
 
 							</div>
-							<div class="clearfix"></div>
+							<div class="clearfix">
+                                <div class="all" data-all="{{ isall|lower }}">
+                                    {% if isall %}
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    {% else %}
+                                         <span class="no"></span>
+                                    {% endif %}
+                                  <b class="no" style="font-size: 17px;">全选</b>
+                                </div>
+                            </div>
+
 							<div class="goon float_l">
 								<a href="{% url 'fashion:list' %}">继续购物</a>
 							</div>
@@ -424,8 +426,6 @@
 						
 
 					</div>
-					
-					
 					<!--猜你喜欢-->
 					<div class="like" style="background:white;overflow:hidden;border:1px solid #e8e8e8">
 						<div class="pro_pubtit">
@@ -449,30 +449,30 @@
 			</div>
 			
 			<!--在线咨询-->
-			<div class="consult absolute">
-				<div class="line_said">
-					<ul>
-				        <li class="consultApp">
-				            <a class="consult_app" href="" title="美西APP"><em></em></a>
-				            <div class="consult_app_m">
-				                <div class="consult_app_sj"></div>
-				                <div class="consult_app_code">
-				                    <img src="{% static 'img2/ewm_indexTop_1.png' %}" style="display:block;">
-				                </div>
-				            </div>
-				        </li>
-				        <li>
-				            <a class="consult_online" href="" title="在线咨询"><em></em></a>
-				        </li>
-				        <li>
-				            <a id="BizQQWPA" class="consult_qq" href="" title="QQ咨询"><em></em></a>
-				        </li>
-				        <li>
-				            <a class="consult_top" href="" title="返回顶部" style="border:none;"><em></em></a>
-				        </li>
-				    </ul>
-			    </div>
-			</div>
+{#			<div class="consult absolute">#}
+{#				<div class="line_said">#}
+{#					<ul>#}
+{#				        <li class="consultApp">#}
+{#				            <a class="consult_app" href="" title="美西APP"><em></em></a>#}
+{#				            <div class="consult_app_m">#}
+{#				                <div class="consult_app_sj"></div>#}
+{#				                <div class="consult_app_code">#}
+{#				                    <img src="{% static 'img2/ewm_indexTop_1.png' %}" style="display:block;">#}
+{#				                </div>#}
+{#				            </div>#}
+{#				        </li>#}
+{#				        <li>#}
+{#				            <a class="consult_online" href="" title="在线咨询"><em></em></a>#}
+{#				        </li>#}
+{#				        <li>#}
+{#				            <a id="BizQQWPA" class="consult_qq" href="" title="QQ咨询"><em></em></a>#}
+{#				        </li>#}
+{#				        <li>#}
+{#				            <a class="consult_top" href="" title="返回顶部" style="border:none;"><em></em></a>#}
+{#				        </li>#}
+{#				    </ul>#}
+{#			    </div>#}
+{#			</div>#}
 			
 			
 			
@@ -619,7 +619,7 @@
 				</div>
 				
 			</div>
-		</div>
+
 		
 	</body>
 </html>
