@@ -14,7 +14,7 @@ $(' #addbutton .btn_buy_now').click(function () {
         // 保存 当前操作按钮对象
         var $that = $(this)
 
-        $.get('http://127.0.0.1:8009/addcar/', request_data, function (response) {
+        $.get('/addcar/', request_data, function (response) {
             console.log(response)
 
             if (response.status == -1){ // 未登录
@@ -22,7 +22,7 @@ $(' #addbutton .btn_buy_now').click(function () {
                 // 设置cookie
                 $.cookie('back', 'market', {expires: 3, path: '/'})
 
-                window.open('http://127.0.0.1:8009/login/', '_self')
+                window.open('/login/', '_self')
             } else  if (response.status ==1 ) { // 操作成功
                 // 有问题，改变的是所有
                 // $('.bt-wrapper .num').html(response.number)

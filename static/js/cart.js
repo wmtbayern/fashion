@@ -1,5 +1,5 @@
 $(function () {
-    $('.cart').width(innerWidth)
+     $('.cart').width(innerWidth)
 
     total()
 
@@ -12,7 +12,7 @@ $(function () {
             'cartid':$(this).attr('data-cardid')
         }
 
-        $.get('/axf/changecartselect/', request_data, function (response) {
+        $.get('/fashion/changecarselect/', request_data, function (response) {
             console.log(response)
 
             if (response.status == 1) {
@@ -49,7 +49,7 @@ $(function () {
             'isall':isall
         }
 
-        $.get('/axf/changecartall/', request_data, function (response) {
+        $.get('/fashion/changecarall/', request_data, function (response) {
             console.log(response)
 
             if (response.status == 1){
@@ -86,7 +86,7 @@ $(function () {
         })
 
         // 显示
-        $('.bill .total b').html(sum)
+        $('.totall .float_r span .total ').html(sum)
     }
 
     // 下单

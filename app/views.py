@@ -16,7 +16,7 @@ from app.models import lunbo, User, lunbo1, Goods, Car, Order, OrderGoods
 def index(request):
     lunbos=lunbo.objects.all()
     bottoms=lunbo1.objects.all()
-    good_list=Goods.objects.all()[1:6]
+    good_list=Goods.objects.all()
 
     token = request.session.get('token')
     print(token)
@@ -295,16 +295,16 @@ def generateorder(request):
     order.save()
 
     # 订单商品(购物车中选中)
-    carts = user.cart_set.filter(isselect=True)
-    for cart in carts:
+    cars = user.car_set.filter(isselect=True)
+    for car in cars:
         orderGoods = OrderGoods()
         orderGoods.order = order
-        orderGoods.goods = cart.goods
-        orderGoods.number = cart.number
+        orderGoods.goods = car.goods
+        orderGoods.number = car.number
         orderGoods.save()
 
         # 购物车中移除
-        cart.delete()
+        car.delete()
 
     # response_data = {
     #     'msg': '生成订单',
@@ -314,7 +314,7 @@ def generateorder(request):
     #
     # return JsonResponse(response_data)
 
-    return render(request, 'order/orderdetail.html', context={'order': order})
+    return render(request, 'orderdetail.html', context={'order': order})
 
 
 def orderlist(request):
@@ -326,18 +326,13 @@ def orderlist(request):
 
     # status_list = ['未付款', '待发货', '待收货', '待评价', '已评价']
 
-    return render(request, 'order/orderlist.html', context={'orders': orders})
+    return render(request, 'orderlist.html', context={'orders': orders})
 
 
 def orderdetail(request, identifier):
     order = Order.objects.filter(identifier=identifier).first()
 
-    return render(request, 'order/orderdetail.html', context={'order': order})
-
-
-def randomtest(request):
-    temp = random.randrange(4, 63)
-    return render(request, 'other/randomtest.html', context={'temp': temp})
+    return render(request, 'orderdetail.html', context={'order': order})
 
 
 def returnurl(request):

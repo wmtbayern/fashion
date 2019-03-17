@@ -42,11 +42,11 @@
 							
 						</span>
 						<span id="shop">
-							<a href="" class="relative" title="购物袋" style="margin-left: 18px;padding-left: 20px;border-left: solid 1px #d9d9d9;">    
+							<a href="" class="relative" title="购物袋" style="margin-left: 18px;padding-left: 20px;border-left: solid 1px #d9d9d9;">
 								<span style="background: url({% static 'img/headico.png' %})-37px -2px no-repeat;height:35px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								（<i id="total_num"></i>）
+{#								（<i id="total_num"></i>）#}
 							</a>
-							
+
 						</span>
 						<div id="headershop">
 			                <div class="header_sj" style="margin-left:140px;"></div>
@@ -353,19 +353,7 @@
 			<!--中间购物车-->
 			<div class="conten">
 				<div class="contaier">
-{#					<div class="empty_car" style="background: white;">#}
-{#						<div class="none_num">#}
-{#							<div class="car_none">#}
-{#								<div class="car_ico"></div>#}
-{#								<div class="carnone">购物车内暂时没有商品</div>#}
-{#								<div class="" style="text-align: center;color: #999;font-size:12px;">登录后将显示您之前加入的商品</div>#}
-{#							</div>#}
-{#							<div class="run clearfix">#}
-{#								<a href="{% url 'fashion:login' %}">登录</a>#}
-{#								<a href="{% url 'fashion:list' %}">随便逛逛</a>#}
-{#							</div>#}
-{#						</div>#}
-{#					</div>#}
+
                     <div class="cart">
                         <ul>
 
@@ -387,7 +375,7 @@
                                             <p class="name">{{ car.goods.alt }}</p>
                                             <p class="price" data-price="{{ car.goods.price_good }}">
                                                 ￥{{ car.goods.price_good }}</p>
-                                            <span class="num" data-number="{{ car.number }}">X{{ car.number }}</span>
+                                            <span class="num" data-number="{{ car.number }}">X &nbsp;{{ car.number }}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -403,93 +391,25 @@
                                     {% else %}
                                         <span class="no"></span>
                                     {% endif %}
-                                    <b>全选</b>
+{#                                    <b>全选</b>#}
                                 </div>
-                                <div class="total">
-                                    <span>￥</span>
-                                    <b>2019</b>
-                                </div>
+{#                                <div class="total">#}
+{#                                    <span>￥</span>#}
+{#                                    <b>2019</b>#}
+{#                                </div>#}
                             </div>
 
-                            <div class="bill-right" id="order">
-
-                            </div>
+{#                            <div class="bill-right" id="order">#}
+{#                                    xaihdhd#}
+{#                            </div>#}
                         </div>
                     </div>
-					<div class="full_car">
-{#						<div class="all_ck">#}
-{#							<div class="all_ck1">#}
-{#								<input type="checkbox" checked id="allSelect" style="margin:0 3px 0 30px;"/>#}
-{#								全选#}
-{#							</div>#}
-{#							<div class="all_ck2">#}
-{#								商品信息#}
-{#							</div>#}
-{#							<div class="all_ck3">#}
-{#								单价#}
-{#							</div>#}
-{#							<div class="all_ck4">#}
-{#								数量#}
-{#							</div>#}
-{#							<div class="all_ck5">#}
-{#								小计#}
-{#							</div>#}
-{#						</div>#}
-					
-						<div class="shop_ck">
-							<table id="shop_ck" style="overflow:hidden;width:100%;">
-								<tr>
-									<!--<td  class="relative shop_ck1">
-										<input type="checkbox" class="ck_box">
-										<div class="shop_ck_img float_l">
-											<img src="../good_img/h-123359-2.jpg" height="90"/>
-										</div>
-										<div class="shop_img_said float_l">
-											
-											<a href="">
-												VERSACE JEANS 范思哲牛仔
-												<br />	聚酯纤维混纺 女士 卫衣
-											</a>
-											
-										</div>
-									</td>
-									<td class="shop_ck_price">
-										￥2900.00
-									</td>
-									<td class="shop_ck_num">
-										<div class="shop_ck_num1">
-											<a href="" class="shop_jian">-</a>
-											<input type="text" class="ck_val" value="1"/>
-											<a href=""class="shop_jia">+</a>
-										</div>
-									</td>
-									<td class="shop_ck2">
-{#										<!-- <span>￥5800.00</span> -->#}
-{#										<!--￥5800.00-->#}
-									</td>
-									<td class="shop_ck3">
-										<div style="text-align:left;margin-left:48px;">
-											<a class="cp_fav" href="" title="加入收藏">加入收藏</a>
-											<br /><br />
-											<a class="cp_del" href="" title="删除">删除</a>
-										</div>
-										
-									</td>
-								</tr>---->
-							</table>
-						</div>
-			
+
 						<!-- 删除选中 -->
-						<div id="del_shop" class="clearfix">
-{#							<div class="all_ck11 float_l">#}
-{#								<input type="checkbox" id="allSelect1" checked style="margin:0 3px 0 30px;"/>#}
-{#								全选#}
-{#							</div>#}
-{#							<span class="float_l" style="padding-left:30px"><a href="" id="delSelect">删除选中商品</a></span>#}
-{#							<span class="float_l"style="padding-left:40px"><a href="">加入收藏</a></span>#}
+						<div  class="totall">
 							<div class="float_r" style="bottom: 1px ;">已选商品<i id="total_nums" style="color: red;font-weight:bolder;">0</i>件
-								<span style="margin-left: 20px;">合计（不含运费、税费）：<span id="total" style="color:red;font-size:18px;font-weight:bolder;margin-right:30px">0</span></span>
-								<p style="text-align: right;margin-right: 40px">活动折扣：-￥0.00</p>
+								<span style="margin-left: 20px;">合计（不含运费、税费）：<span class="total" style="color:red;font-size:18px;font-weight:bolder;margin-right:30px">0</span></span>
+
 							</div>
 							<div class="clearfix"></div>
 							<div class="goon float_l">
@@ -517,21 +437,7 @@
 						<!--<div class="run_pic">-->
 						<div id="like_shop" class="run_pic_like">
 							<div id="like_small">
-								<ul id="like_list" class="clearfix" style="margin: 0; padding: 0; position: relative;z-index: 1; width: 5240px; left: -1048px;">
-									<!-- <li style="overflow: hidden; float: left; width: 220px; height: 382px;">
-					       				<a title="FAYE迷你双肩背包" href="">
-						                    <img src="../img2/141506594225eaeeea5-160x192.jpg" width="160" height="192" alt=""><br>
-						                    <div class="list_name">
-						                        <span class="shop_name">Chloe 蔻依</span><br>
-						                        <span class="shop_type">FAYE迷你双肩背包</span>
-						                    </div>
-						                </a>
-						                <div class="shop_price">￥10640.00</div>
-						                <a class="shop_add" title="添加到购物袋" style="cursor: pointer;">添加到购物袋</a>
-						            </li> -->
-						            
-					                   
-								</ul>
+
 								<div id="car_prev"><img src="{% static 'img/pre_btn.png' %}" style="padding-top:100px;"/></div>
 								<div id="car_next"><img src="{% static 'img/next_btn.png' %}" style="padding-top:100px;"/></div>
 							</div>
