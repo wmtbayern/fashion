@@ -19,7 +19,7 @@ footer .cart .name {
     border: 1px solid grey;
 }
 .cart .glyphicon-ok{
-    background: #ffd601;
+    background: blue;
     color: white;
     border-radius: 50%;
     width: 1rem;

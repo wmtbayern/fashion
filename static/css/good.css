@@ -490,7 +490,7 @@ body{
     background: #333;
 }
 .btn_buy_now, .btn_add_shopping {
-    width: 120px;
+    width: 100px;
     height: 38px;
     font-size: 14px;
     overflow: hidden;
@@ -517,7 +517,7 @@ body{
     display: block;
     width: 43px;
     height: 43px;
-    background: url(../good_img/pst.gif) no-repeat;
+    /*background: url(../good_img/pst.gif) no-repeat;*/
 }
 .pro_share {
     border: solid 1px #e8e8e8;

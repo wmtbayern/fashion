@@ -1,7 +1,5 @@
 $(function () {
 
-
-
 $(' #addbutton .btn_buy_now').click(function () {
         // 需要传递 user、goods
         // user 因为状态保持，所以可以不用传递 [前提必须是先登录]
@@ -20,7 +18,7 @@ $(' #addbutton .btn_buy_now').click(function () {
             if (response.status == -1){ // 未登录
 
                 // 设置cookie
-                $.cookie('back', 'market', {expires: 3, path: '/'})
+                $.cookie('back', 'goods', {expires: 3, path: '/'})
 
                 window.open('/login/', '_self')
             } else  if (response.status ==1 ) { // 操作成功
@@ -33,11 +31,34 @@ $(' #addbutton .btn_buy_now').click(function () {
                 // $(this).prev().html(response.number)
 
                 // // 设置个数
-                // $that.next().html(response.number)
+                 $that.next().html(response.number)
                 //
                 // // 设置显示
-                // $that.prev().show()
-                // $that.prev().prev().show()
+                 $that.prev().show()
+                 $that.next().show()
+
+            }
+        })
+    })
+
+    // 点击减操作
+    $('#addbutton .btn_add_shopping').click(function () {
+        var $that = $(this)
+            console.log('kkk')
+        request_data = {
+            'goodsid': $(this).attr('data-goodsid')
+        }
+
+        $.get('/subcar/', request_data, function (response) {
+            console.log(response)
+
+            if (response.status == 1){
+                if (response.number) {
+                    $that.next().next().html(response.number)
+                } else {
+                    $that.next().next().hide()
+                    $that.hide()
+                }
             }
         })
     })
