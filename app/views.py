@@ -148,13 +148,11 @@ def list(request):
     return render(request,'list.html',context=response_data)
 
 def car(request):
-
     token = request.session.get('token')
     userid = cache.get(token)
     if userid:  # 有登录才显示
         user = User.objects.get(pk=userid)
         cars = user.car_set.filter(number__gt=0)
-
         isall = True
         for car in cars:
             if not car.isselect:
@@ -179,7 +177,6 @@ def addcar(request):
         user = User.objects.get(pk=userid)
         goodsid = request.GET.get('goodsid')
         goods = Goods.objects.get(pk=goodsid)
-
         # 商品不存在: 添加新记录
         # 商品存在: 修改number
         cars = Car.objects.filter(user=user).filter(goods=goods)
@@ -197,42 +194,33 @@ def addcar(request):
         response_data['status'] = 1
         response_data['number'] = car.number
         response_data['msg'] = '成功添加 {} 到购物车: {}'.format(car.goods.wen, car.number)
-
         return JsonResponse(response_data)
-
     response_data['status'] = -1
     response_data['msg'] = '请登录后操作'
-
     return JsonResponse(response_data)
-
 
 def subcar(request):
     # 商品
     goodsid = request.GET.get('goodsid')
     goods = Goods.objects.get(pk=goodsid)
-
     # 用户
     token = request.session.get('token')
     userid = cache.get(token)
     user = User.objects.get(pk=userid)
-
     # 获取对应的购物车信息
     car = Car.objects.filter(user=user).filter(goods=goods).first()
     car.number = car.number - 1
     car.save()
-
     response_data = {
         'msg': '删减商品成功',
         'status': 1,
         'number': car.number
     }
-
     return JsonResponse(response_data)
 
 
 def changecarselect(request):
     carid = request.GET.get('cartid')
-
     car = Car.objects.get(pk=carid)
     car.isselect = not car.isselect
     car.save()
@@ -243,7 +231,6 @@ def changecarselect(request):
     }
 
     return JsonResponse(response_data)
-
 
 def changecarall(request):
     isall = request.GET.get('isall')
@@ -356,11 +343,11 @@ def pay(request):
 
     sum = 0
     for orderGoods in order.ordergoods_set.all():
-        sum += orderGoods.goods.price * orderGoods.number
+        sum += int(orderGoods.goods.price_good) * int(orderGoods.number)
 
     # 支付地址信息
     data = alipay.direct_pay(
-        subject='就是要买买买......', # 显示标题
+        subject='买买买成功......', # 显示标题
         out_trade_no=order.identifier,    # 商品 订单号
         total_amount=str(sum),   # 支付金额
         return_url='http://120.79.59.213/fashion/returnurl/'

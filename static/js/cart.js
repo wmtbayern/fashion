@@ -27,7 +27,6 @@ $(function () {
         })
     })
 
-
     // 全选/取消全选
     $('.totall .clearfix .all').click(function () {
         var isall = $(this).attr('data-all')
@@ -65,12 +64,11 @@ $(function () {
             }
         })
     })
-    
-    
+
     // 计算总数
     function total() {
         var sum = 0
-
+        var to= 0
         // 遍历 获取 选中
         $('.cart li').each(function () {
             var $confirm = $(this).find('.confirm-wrapper')
@@ -80,21 +78,13 @@ $(function () {
             if ($confirm.find('.glyphicon').length){
                 var price = $content.find('.price').attr('data-price')
                 var num = $content.find('.num').attr('data-number')
-
+                to += num * 1
                 sum += num * price
             }
         })
-
         // 显示
+        $('.totall .float_r #total_nums ').html(to)
         $('.totall .float_r span .total ').html(sum)
     }
 
-    // 下单
-    // $('#order').click(function () {
-    //     $.get('/axf/generateorder/', function (response) {
-    //         console.log(response)
-    //
-    //         // 跳转
-    //     })
-    // })
 })

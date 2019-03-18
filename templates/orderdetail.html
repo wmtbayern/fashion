@@ -13,8 +13,9 @@
 		<!--轮播大图-->
 		<script src="{% static 'js/jquery-1.12.3.js' %}"></script>
 		<script src="{% static 'js/jquery.cookie.js' %}"></script>
-{#		<script src="{% static 'js/car.js' %}"></script>#}
+
 		<script src="{% static 'js/cart.js' %}"></script>
+        <script src="{% static 'js/orderdetail.js' %}"></script>
 
 
 	</head>
@@ -40,6 +41,7 @@
 						<span>
 							<a href="{% url 'fashion:login' %}" title="登录"  style="font-size: 20px">{{ user.name | default:'未登陆' }}</a>
 							<a href="{% url 'fashion:register' %}" title="注册" style="font-size: 20px">注册</a>
+							<a href="{% url 'fashion:logout' %}" style="font-size: 20px">退出</a>
 
 						</span>
 						<span id="shop">

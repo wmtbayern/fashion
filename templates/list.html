@@ -37,7 +37,7 @@
 						<span>
 							<a href="{% url 'fashion:login' %}"   style="font-size: 20px">{{user.name | default:'未登陆'}}</a>
 							<a href="{% url 'fashion:register' %}" title="注册" style="font-size: 20px">注册</a>
-							
+							<a href="{% url 'fashion:logout' %}" style="font-size: 20px">退出</a>
 						</span>
 						<span id="shop">
 							<a href="{% url 'fashion:car' %}"  style="margin-left: 18px;padding-left: 20px;border-left: solid 1px #d9d9d9;">
