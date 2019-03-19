@@ -41,7 +41,7 @@
             <div class="top_r">
 						<span>
 							<a href="{% url 'fashion:login' %}" title="登录"
-                               style="font-size: 20px">{{ user.name | default:'未登陆' }}</a>
+                               style="font-size: 20px;color: blue">{{ user.name | default:'未登陆' }}</a>
 							<a href="{% url 'fashion:register' %}" title="注册" style="font-size: 20px">注册</a>
                             <a href="{% url 'fashion:logout' %}" style="font-size: 20px;">退出</a>
 
@@ -51,7 +51,7 @@
                                style="margin-left: 18px;padding-left: 20px;border-left: solid 1px #d9d9d9;">
 								<span style="background: url({% static 'img/headico.png' %})-37px -2px no-repeat;height:35px;font-size: 17px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span style="font-size: 17px">购物车</span>
-							</a>>
+							</a>
 
 						</span>
                 <div id="headershop">
@@ -65,10 +65,7 @@
                                 <ul id="product2_li">
                                     {#											<!-- <li class="product2" style="overflow:hidden;">#}
 
-
                                 </ul>
-
-
                             </div>
                             <div class="car_b">
                                 <div class="to_l">
@@ -272,7 +269,7 @@
                 <div class="goon float_l">
                     <a href="{% url 'fashion:list' %}">继续购物</a>
                 </div>
-                <div class="goon1 float_r">
+                <div class="goon1 float_r" disabled="false">
                     <a href="{% url 'fashion:generateorder' %}" style="color: white">下单</a>
                 </div>
             </div>
@@ -368,12 +365,8 @@
                     <p style="clear:both;text-align:right;line-height:60px;color:#999;font-size:12px;">
                         手机扫码即可下载美西APP或关注官方微信
                     </p>
-                    <!--</div>-->
-
                 </div>
-
             </div>
-
         </div>
         <div class="foot_miu">
             <div class="contaier relative">

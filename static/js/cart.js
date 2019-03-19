@@ -85,6 +85,12 @@ $(function () {
         // 显示
         $('.totall .float_r #total_nums ').html(to)
         $('.totall .float_r span .total ').html(sum)
+        console.log(to<1)
+        if (to<1){
+            $('.totall .goon1 ').hide()
+            // $('.totall .float_r a').click(function () {
+            }else{
+            $('.totall .goon1 ').show()
+        }
     }
-
 })

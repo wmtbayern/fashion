@@ -7,7 +7,6 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}"/>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
 
-
 	</head>
 	<body>
 		<!--头部-->
@@ -70,8 +69,11 @@
 								<div class="pwd_icon float_l"></div>
 								<div class="pwd_menu float_l">
 									<input name='password' type="password" placeholder="请输入密码" id="inp2"/>
-								</div>
 
+								</div>
+                                <p style="color: red">
+                                {{ ps_err }}
+                                </p>
 							</div>
 							<div class="checkbox clearfix">
 								<div class="float_l">

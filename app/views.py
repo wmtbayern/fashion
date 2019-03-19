@@ -19,7 +19,6 @@ def index(request):
     lunbos=lunbo.objects.all()
     bottoms=lunbo1.objects.all()
     good_list=Goods.objects.all()
-
     token = request.session.get('token')
     print(token)
     userid = cache.get(token)
@@ -33,9 +32,7 @@ def index(request):
     if userid:
         user = User.objects.get(pk=userid)
         print(user.name)
-
         response_data['user'] = user
-
     return render(request,'index.html',context=response_data)
 
 @csrf_exempt
@@ -62,9 +59,8 @@ def login(request):
                 return render(request,'index.html')
             else:  # 密码错误
                 return render(request, 'login.html')
-        else:  # 不存在
+        else:  # 用户不存在
             return render(request, 'login.html')
-
 
 def logout(request):
     request.session.flush()
@@ -253,7 +249,6 @@ def changecarall(request):
         'msg': '全选/取消全选 成功',
         'status': 1
     }
-
     return JsonResponse(response_data)
 
 
@@ -266,7 +261,6 @@ def generateorder(request):
     token = request.session.get('token')
     userid = cache.get(token)
     user = User.objects.get(pk=userid)
-
     # 订单
     order = Order()
 
@@ -337,10 +331,8 @@ def appnotifyurl(request):
 
 
 def pay(request):
-
     orderid = request.GET.get('orderid')
     order = Order.objects.get(pk=orderid)
-
     sum = 0
     for orderGoods in order.ordergoods_set.all():
         sum += int(orderGoods.goods.price_good) * int(orderGoods.number)

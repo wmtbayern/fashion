@@ -425,7 +425,8 @@ $(function() {
 	$("#total").html("￥" + totalPrice);
 	$(".totalprice").html(totalPrice);
 	$("#total_num").html(total_num);
-	$("#total_nums").html(total_num);//购物车页下面总数
+	$("#total_nums").html(total_num);
+	//购物车页下面总数
 }
 		else{
 			console.log("购物车还没有商品， 请先购买！");
@@ -529,7 +530,7 @@ $(function() {
 
 	//判断是否全部勾选了
 	isAllSelect();
-	function isAllSelect(){
+	function isAllSelect() {
 
 		//判断是否为undefined
 		var arr = $.cookie("goods");
@@ -540,12 +541,12 @@ $(function() {
 		var arr = JSON.parse($.cookie("goods"));
 
 		var sum = 0;
-		for (var i=0; i<arr.length; i++) {
+		for (var i = 0; i < arr.length; i++) {
 			sum += arr[i].checked;
 		}
 
 		//全选了
-		if (arr.length!=0 && sum==arr.length) {
+		if (arr.length != 0 && sum == arr.length) {
 			$("#allSelect").prop("checked", true);
 			$("#allSelect1").prop("checked", true);
 
@@ -629,6 +630,7 @@ $(function() {
 		//刷新节点数据
 		refresh();
 	})
+
 
 
 

@@ -18,7 +18,7 @@ $(' #addbutton .btn_buy_now').click(function () {
             if (response.status == -1){ // 未登录
 
                 // 设置cookie
-                $.cookie('back', 'goods', {expires: 3, path: '/'})
+                $.cookie('back', 'goods', {expires: 7, path: '/'})
 
                 window.open('/login/', '_self')
             } else  if (response.status ==1 ) { // 操作成功
@@ -26,14 +26,14 @@ $(' #addbutton .btn_buy_now').click(function () {
                 // $('.bt-wrapper .num').html(response.number)
 
                 // 用兄弟节点 [操作按钮 this]
-                // this 谁调用 指向 谁
+                // this 谁调用 指向谁
                 // 当前函数是ajax触发的 ，所以 $(this) 指向 ajax
                 // $(this).prev().html(response.number)
 
                 // // 设置个数
                  $that.next().html(response.number)
                 //
-                // // 设置显示
+                // // 设置显示  兄弟标签才可以用prev next
                  $that.prev().show()
                  $that.next().show()
 
