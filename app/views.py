@@ -342,7 +342,7 @@ def pay(request):
         subject='买买买成功......', # 显示标题
         out_trade_no=order.identifier,    # 商品 订单号
         total_amount=str(sum),   # 支付金额
-        return_url='http://120.79.59.213/fashion/returnurl/'
+        return_url='http://120.79.59.213/returnurl/'
     )
 
     # 支付地址
